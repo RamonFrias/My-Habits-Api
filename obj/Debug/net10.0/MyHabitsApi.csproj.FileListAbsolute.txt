@@ -128,10 +128,10 @@ C:\Users\ramon\OneDrive\Documentos\.NET Course\My personal projects\MyHabitsApi\
 C:\Users\ramon\OneDrive\Documentos\.NET Course\My personal projects\MyHabitsApi\MyHabitsApi\obj\Debug\net10.0\staticwebassets.development.json
 C:\Users\ramon\OneDrive\Documentos\.NET Course\My personal projects\MyHabitsApi\MyHabitsApi\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 C:\Users\ramon\OneDrive\Documentos\.NET Course\My personal projects\MyHabitsApi\MyHabitsApi\obj\Debug\net10.0\swae.build.ex.cache
-C:\Users\ramon\OneDrive\Documentos\.NET Course\My personal projects\MyHabitsApi\MyHabitsApi\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\Users\ramon\OneDrive\Documentos\.NET Course\My personal projects\MyHabitsApi\MyHabitsApi\obj\Debug\net10.0\MyHabits.9981E850.Up2Date
 C:\Users\ramon\OneDrive\Documentos\.NET Course\My personal projects\MyHabitsApi\MyHabitsApi\obj\Debug\net10.0\MyHabitsApi.dll
 C:\Users\ramon\OneDrive\Documentos\.NET Course\My personal projects\MyHabitsApi\MyHabitsApi\obj\Debug\net10.0\refint\MyHabitsApi.dll
 C:\Users\ramon\OneDrive\Documentos\.NET Course\My personal projects\MyHabitsApi\MyHabitsApi\obj\Debug\net10.0\MyHabitsApi.pdb
 C:\Users\ramon\OneDrive\Documentos\.NET Course\My personal projects\MyHabitsApi\MyHabitsApi\obj\Debug\net10.0\MyHabitsApi.genruntimeconfig.cache
 C:\Users\ramon\OneDrive\Documentos\.NET Course\My personal projects\MyHabitsApi\MyHabitsApi\obj\Debug\net10.0\ref\MyHabitsApi.dll
+C:\Users\ramon\OneDrive\Documentos\.NET Course\My personal projects\MyHabitsApi\MyHabitsApi\obj\Debug\net10.0\MyHabitsApi.sourcelink.json
