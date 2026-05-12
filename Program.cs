@@ -3,6 +3,8 @@ using MyHabitsApi.Context;
 using MyHabitsApi.Extentions;
 using MyHabitsApi.Filters;
 using MyHabitsApi.Mapping;
+using MyHabitsApi.Repository.Implementations;
+using MyHabitsApi.Repository.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,10 @@ builder.Services.AddAuthentication("Nearer").AddJwtBearer();
 var mySqlConnectionString = builder.Configuration.GetConnectionString("MySqlConnection");
 builder.Services.AddDbContext<ApiDbContext>(options => options.UseMySql(mySqlConnectionString, ServerVersion.AutoDetect(mySqlConnectionString)));
 builder.Services.AddAutoMapper(typeof(ApiMappingDTOProfile));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IHabitRepository, HabitRepository>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 var app = builder.Build();
 

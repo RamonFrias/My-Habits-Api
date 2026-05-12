@@ -11,16 +11,16 @@ namespace MyHabitsApi.Repository.Implementations
     {
         public UserRepository(ApiDbContext context) : base(context) { }
 
-        public async Task<PagedList<User>> GetAllUsers(UserPaginationParameter pagination)
+        public async Task<PagedList<User>> GetAllUsersAsync(UserPaginationParameter pagination)
         {
             var users = GetAll().AsQueryable();
-            var paginatedUsers = await PagedList<User>.ToPagedList(users, pagination.PageSize, pagination.PageNumber);
+            var paginatedUsers = await PagedList<User>.ToPagedListAsync(users, pagination.PageSize, pagination.PageNumber);
             return paginatedUsers;
         }
 
-        public async Task<User?> GetUserById(int id)
+        public async Task<User?> GetUserByIdAsync(int id)
         {
-            var user = await GetByFilter(u => u.Id == id);
+            var user = await GetByFilterAsync(u => u.Id == id);
             return user;
         }
     }

@@ -6,7 +6,7 @@ namespace MyHabitsApi.Repository.Interfaces
 {
     public interface IUserRepository : IRepository<User>
     {
-        Task<PagedList<User>> GetAllUsers(UserPaginationParameter pagination);
-        Task<User?> GetUserById(int id);
+        Task<PagedList<User>> GetAllUsersAsync(UserPaginationParameter pagination);
+        Task<User?> GetUserByIdAsync(int id);
     }
 }

@@ -11,37 +11,37 @@ namespace MyHabitsApi.Repository.Implementations
     {
         public HabitRepository(ApiDbContext context) : base(context) { }
 
-        public async Task<PagedList<Habit>> GetAllHabits(HabitPaginationParameter pagination)
+        public async Task<PagedList<Habit>> GetAllHabitsAsync(HabitPaginationParameter pagination)
         {
             var habits = GetAll().AsQueryable();
-            var paginatedHabits = await PagedList<Habit>.ToPagedList(habits, pagination.PageSize, pagination.PageNumber);
+            var paginatedHabits = await PagedList<Habit>.ToPagedListAsync(habits, pagination.PageSize, pagination.PageNumber);
             return paginatedHabits;
         }
 
-        public async Task<Habit?> GetHabitById(int id)
+        public async Task<Habit?> GetHabitByIdAsync(int id)
         {
-            var habit = await GetByFilter(h => h.Id == id);
+            var habit = await GetByFilterAsync(h => h.Id == id);
             return habit;
         }
 
-        public async Task<PagedList<Habit>> GetHabitsByFrequency(HabitFraquencyFilter frequencyFilter)
+        public async Task<PagedList<Habit>> GetHabitsByFrequencyAsync(HabitFraquencyFilter frequencyFilter)
         {
             var habits = GetAll().Where(h => h.Frequency == frequencyFilter.Frequency).AsQueryable();
-            var paginatedHabits = await PagedList<Habit>.ToPagedList(habits, frequencyFilter.PageSize, frequencyFilter.PageNumber);
+            var paginatedHabits = await PagedList<Habit>.ToPagedListAsync(habits, frequencyFilter.PageSize, frequencyFilter.PageNumber);
             return paginatedHabits;
         }
 
-        public async Task<PagedList<Habit>> GetHabitsByUserId(HabitsByUserFilter userFilter)
+        public async Task<PagedList<Habit>> GetHabitsByUserIdAsync(HabitsByUserFilter userFilter)
         {
             var habits = GetAll().Where(h => h.UserId == userFilter.UserId).AsQueryable();
-            var paginatedHabits = await PagedList<Habit>.ToPagedList(habits, userFilter.PageSize, userFilter.PageNumber);
+            var paginatedHabits = await PagedList<Habit>.ToPagedListAsync(habits, userFilter.PageSize, userFilter.PageNumber);
             return paginatedHabits;
         }
 
-        public async Task<PagedList<Habit>> GetHabitsIsActive(HabitIsActiveFilter activeFilter)
+        public async Task<PagedList<Habit>> GetHabitsIsActiveAsync(HabitIsActiveFilter activeFilter)
         {
             var habits = GetAll().Where(h => h.IsActive == activeFilter.IsActive).AsQueryable();
-            var paginatedHabits = await PagedList<Habit>.ToPagedList(habits, activeFilter.PageSize, activeFilter.PageNumber);
+            var paginatedHabits = await PagedList<Habit>.ToPagedListAsync(habits, activeFilter.PageSize, activeFilter.PageNumber);
             return paginatedHabits;
         }
     }

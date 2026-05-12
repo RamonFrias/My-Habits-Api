@@ -7,10 +7,10 @@ namespace MyHabitsApi.Repository.Interfaces
 {
     public interface IHabitRepository : IRepository<Habit>
     {
-        Task<PagedList<Habit>> GetAllHabits(HabitPaginationParameter pagination);
-        Task<PagedList<Habit>> GetHabitsIsActive(HabitIsActiveFilter activeFilter);
-        Task<PagedList<Habit>> GetHabitsByFrequency(HabitFraquencyFilter frequencyFilter);
-        Task<PagedList<Habit>> GetHabitsByUserId(HabitsByUserFilter userFilter);
-        Task<Habit?> GetHabitById(int id);
+        Task<PagedList<Habit>> GetAllHabitsAsync(HabitPaginationParameter pagination);
+        Task<PagedList<Habit>> GetHabitsIsActiveAsync(HabitIsActiveFilter activeFilter);
+        Task<PagedList<Habit>> GetHabitsByFrequencyAsync(HabitFraquencyFilter frequencyFilter);
+        Task<PagedList<Habit>> GetHabitsByUserIdAsync(HabitsByUserFilter userFilter);
+        Task<Habit?> GetHabitByIdAsync(int id);
     }
 }

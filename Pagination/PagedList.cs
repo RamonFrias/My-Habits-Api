@@ -20,7 +20,7 @@ namespace MyHabitsApi.Pagination
             AddRange(items);
         }
 
-        public static async Task<PagedList<T>> ToPagedList(IQueryable<T> source, int pageSize, int pageNumber)
+        public static async Task<PagedList<T>> ToPagedListAsync(IQueryable<T> source, int pageSize, int pageNumber)
         {
             var count = source.Count();
             var items = await source.Skip((pageNumber - 1) * pageSize).Take(pageSize).AsNoTracking().ToListAsync();

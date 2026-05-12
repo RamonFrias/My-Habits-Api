@@ -14,7 +14,7 @@ namespace MyHabitsApi.Repository.Implementations
             return _context.Set<T>();
         }
 
-        public async Task<T?> GetByFilter(Expression<Func<T, bool>> predicate)
+        public async Task<T?> GetByFilterAsync(Expression<Func<T, bool>> predicate)
         {
             var value = await _context.Set<T>().AsNoTracking().FirstOrDefaultAsync(predicate);
             if (value is null)
@@ -22,7 +22,7 @@ namespace MyHabitsApi.Repository.Implementations
             return value;
         }
 
-        public async Task<T> Add(T entity)
+        public async Task<T> AddAsync(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
             return entity;
