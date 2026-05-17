@@ -22,7 +22,7 @@ namespace MyHabitsApi.Pagination
 
         public static async Task<PagedList<T>> ToPagedListAsync(IQueryable<T> source, int pageSize, int pageNumber)
         {
-            var count = source.Count();
+            var count = await source.CountAsync();
             var items = await source.Skip((pageNumber - 1) * pageSize).Take(pageSize).AsNoTracking().ToListAsync();
             return new PagedList<T>(items, count, pageSize, pageNumber);
         }

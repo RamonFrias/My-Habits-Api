@@ -7,7 +7,7 @@ namespace MyHabitsApi.Filters
     {
         public void OnException(ExceptionContext context)
         {
-            context.Result = new ObjectResult("Ocorreu um erro ao processar sua solicitação!")
+            context.Result = new ObjectResult($"Ocorreu um erro ao processar sua solicitação! Erro ocorrido {context.Exception.Message}")
             {
                 StatusCode = StatusCodes.Status500InternalServerError
             };
