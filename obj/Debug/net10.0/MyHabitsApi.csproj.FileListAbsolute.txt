@@ -135,3 +135,4 @@ C:\Users\ramon\OneDrive\Documentos\.NET Course\My personal projects\MyHabitsApi\
 C:\Users\ramon\OneDrive\Documentos\.NET Course\My personal projects\MyHabitsApi\MyHabitsApi\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\ramon\OneDrive\Documentos\.NET Course\My personal projects\MyHabitsApi\MyHabitsApi\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\ramon\OneDrive\Documentos\.NET Course\My personal projects\MyHabitsApi\MyHabitsApi\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\ramon\OneDrive\Documentos\.NET Course\My personal projects\MyHabitsApi\MyHabitsApi\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

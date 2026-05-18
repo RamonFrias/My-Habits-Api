@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,7 @@ namespace MyHabitsApi.Controllers
             _mapper = mapper;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<PagedList<UserResponseDTO>>> GetAllUsersAsync([FromQuery]UserPaginationParameter pagination)
         {

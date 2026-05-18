@@ -13,6 +13,139 @@
     }
   ],
   "paths": {
+    "/api/Auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginModel"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterModel"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/refresh-token": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TokenModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TokenModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TokenModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TokenModel"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/revoke/{userName}": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/User": {
       "get": {
         "tags": [
@@ -275,6 +408,27 @@
           }
         }
       },
+      "LoginModel": {
+        "required": [
+          "userName",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "password": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
       "Operation": {
         "type": "object",
         "properties": {
@@ -305,6 +459,51 @@
       "OperationType": {
         "type": "integer"
       },
+      "RegisterModel": {
+        "required": [
+          "userName",
+          "password",
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "password": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "email": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "TokenModel": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "refreshToken": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
       "UserResponseDTO": {
         "type": "object",
         "properties": {
@@ -333,6 +532,9 @@
     }
   },
   "tags": [
+    {
+      "name": "Auth"
+    },
     {
       "name": "User"
     }
