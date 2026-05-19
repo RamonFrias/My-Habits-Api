@@ -40,6 +40,7 @@ namespace MyHabitsApi.Controllers
                     new Claim(ClaimTypes.Name, user.UserName!),
                     new Claim(ClaimTypes.Email, user.Email!),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                    new Claim("id", user.UserName!),
                 };
                 foreach(var userRole in userRoles)
                 {
@@ -126,6 +127,54 @@ namespace MyHabitsApi.Controllers
             user.RefreshToken = null;
             await _userManager.UpdateAsync(user);
             return NoContent();
+        }
+
+        [HttpPost]
+        [Route("CreateRole/{roleName}")]
+        public async Task<IActionResult> CreateRole(string roleName)
+        {
+            var roleExist = await _roleManager.RoleExistsAsync(roleName);
+            if(!roleExist)
+            {
+                var roleResult = await _roleManager.CreateAsync(new IdentityRole(roleName));
+                if (roleResult.Succeeded)
+                {
+                    return StatusCode(StatusCodes.Status200OK, new Response { Status = "Success", Message = "Role Added successfuly!" });
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Issue adding the new role" });
+                }
+            }
+            return StatusCode(StatusCodes.Status400BadRequest, new Response { Status = "Error", Message = "Role already exists" });
+        }
+
+        [HttpPost]
+        [Route("AddUserToRole/{email}/{roleName}")]
+        public async Task<IActionResult> AddUserToRole(string email, string roleName)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if(user is not null)
+            {
+                var result = await _userManager.AddToRoleAsync(user, roleName);
+                if (result.Succeeded)
+                {
+                    return StatusCode(StatusCodes.Status200OK, new Response
+                    {
+                        Status = "Success",
+                        Message = $"User {email} added to {roleName} role!"
+                    });
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                    {
+                        Status = "Error",
+                        Message = "Error: Unable to add user to role!"
+                    });
+                }
+            }
+            return BadRequest(new { error = "Unable to find user" });
         }
     }
 }

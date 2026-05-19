@@ -25,8 +25,8 @@ namespace MyHabitsApi.Controllers
             _mapper = mapper;
         }
 
-        [Authorize]
         [HttpGet]
+        [Authorize(Policy = "UserOnly")]
         public async Task<ActionResult<PagedList<UserResponseDTO>>> GetAllUsersAsync([FromQuery]UserPaginationParameter pagination)
         {
             var users = await _unitOfWork.UserRepository.GetAllUsersAsync(pagination);
@@ -44,6 +44,7 @@ namespace MyHabitsApi.Controllers
         }
 
         [HttpGet("{id:int:min(1)}", Name = "GetUserById")]
+        [Authorize(Policy = "AdminOnly")]
         public async Task<ActionResult<UserResponseDTO>> GetUserById(int id)
         {
             var user = await _unitOfWork.UserRepository.GetUserByIdAsync(id);
@@ -82,6 +83,7 @@ namespace MyHabitsApi.Controllers
         }
 
         [HttpDelete("{id:int:min(1)}")]
+        [Authorize(Policy = "SuperAdminOnly")]
         public async Task<ActionResult> DeleteUserById(int id)
         {
             var user = await _unitOfWork.UserRepository.GetUserByIdAsync(id);
